@@ -20,24 +20,6 @@
     <script src="webvr-boilerplate/webvr-polyfill.js"></script>
     <!-- index.jsを読み込む -->
     <script src="index.js"></script>
-    <script id="fragmentShader" type="x-shader/x-fragment">
-      void main()
-      {
-        vec3 specularColor = specular;
-        specularColor *= texture2D( specularMap, vUv ).rgb;
-
-        float glossinessFactor = glossiness;
-        glossinessFactor *= texture2D( glossinessMap, vUv ).a;
-
-        PhysicalMaterial material;
-
-        material.diffuseColor = diffuseColor.rgb;
-
-        material.specularRoughness = clamp( 1.0 - glossinessFactor, 0.04, 1.0 );
-
-        material.specularColor = specularColor.rgb;
-      }
-    </script>
   </head>
   <body>
     <div id="main_canvas">
